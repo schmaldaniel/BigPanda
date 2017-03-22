@@ -1,0 +1,7 @@
+---
+- name: copy gify-panda app
+  copy: src=gify-panda-app dest=/opt/ owner=root group=root mode=0755
+
+- name: start gify-panda app
+  service: name=/opt/gify-panda-app/gify-panda.py state=started enabled=yes
+

@@ -12,3 +12,4 @@
   roles:
     - { role: nodejs, tags: nodejs }
     - { role: bamboo, tags: bamboo }
+    - { role: gify-panda, tags: gify-panda }
