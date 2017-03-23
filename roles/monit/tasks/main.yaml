@@ -1,0 +1,10 @@
+---
+
+- name: Install Monit
+  apt:
+    name: 'monit'
+    state: 'latest'
+    install_recommends: True
+
+- name: copy monitrc
+  copy: src=monitrc dest=/etc/monit/ owner=root group=root mode=0700

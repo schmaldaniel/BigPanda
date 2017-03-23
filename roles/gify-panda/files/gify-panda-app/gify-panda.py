@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import SimpleHTTPServer
 import SocketServer
 import os
@@ -15,7 +16,8 @@ def run(port=PORT):
 
 if __name__ == "__main__":
     from sys import argv
+    path = os.path.dirname(os.path.realpath(__file__))
     import os
     # Set the root directory to be /resources
-    os.chdir(os.getcwd() + '/resources')
+    os.chdir(path + '/resources')
     run()
