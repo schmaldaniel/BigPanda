@@ -1,0 +1,7 @@
+---
+
+- name: Base install monit
+  hosts: base
+  become: yes
+  roles:
+    - monit

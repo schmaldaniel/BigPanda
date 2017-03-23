@@ -5,21 +5,7 @@
   pre_tasks:
     - name: Set hostname
       hostname: name={{inventory_hostname}}
-
-
-- name: Base install monit
-  hosts: base
-  become: yes
-  roles:
-    - role: monit   
-
-- name: Base gify-panda service
-  hosts: base
-  become: yes
-  vars:
-    - app_name: gify-panda
-  roles:   
-    - gify-panda
     
 
-
+- include: monit.yaml
+- include: gify-panda.yaml

@@ -1,0 +1,8 @@
+---
+- name: Base gify-panda service
+  hosts: base
+  become: yes
+  vars:
+    - app_name: gify-panda
+  roles:   
+    - gify-panda
