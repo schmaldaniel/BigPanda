@@ -1,8 +1,8 @@
-set httpd port 2812 and
+set httpd port {{port}} and
     use address localhost
     allow localhost
 
-set daemon 30
+set daemon {{polling_interval}}
 set logfile /var/log/monit.log
 set statefile /var/lib/monit/state
 set idfile /var/lib/monit/id

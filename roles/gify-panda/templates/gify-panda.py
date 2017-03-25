@@ -3,14 +3,15 @@ import SimpleHTTPServer
 import SocketServer
 import os
 
-PORT = 8000
+PORT = {{service_port}}
+ADDRESS = {{service_address}}
 
-def run(port=PORT):
+def run(address='', port=80):
     '''
     Get port as variable and run http server based on that port
     '''
-    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-    httpd = SocketServer.TCPServer(("", port), Handler)
+    handler = SimpleHTTPServer.SimpleHTTPRequestHandler
+    httpd = SocketServer.TCPServer((address, port), handler)
     print "serving at port", PORT
     httpd.serve_forever()
 
@@ -20,4 +21,4 @@ if __name__ == "__main__":
     import os
     # Set the root directory to be /resources
     os.chdir(path + '/resources')
-    run()
+    run(address=ADDRESS, port=PORT)

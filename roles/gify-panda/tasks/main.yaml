@@ -1,16 +1,21 @@
 ---
-- name: copy gify-panda app
+- name: copy gify-panda resources
   copy: src=gify-panda-app dest=/opt/ owner=root group=root mode=0755
 
+- name: copy gify-panda app
+  template: src=gify-panda.py dest=/opt/gify-panda-app/ owner=root group=root mode=0755
+
+# - name: copy gify-panda daemon
+#   copy: src=daemon/gify-panda dest=/etc/init.d/ owner=root group=root mode=0755
+
 - name: copy gify-panda daemon
-  copy: src=daemon/gify-panda dest=/etc/init.d/ owner=root group=root mode=0755
+  template: src=../templates/daemon.template dest=/etc/init.d/gify-panda owner=root group=root mode=0755
 
 - name: copy gify-panda monit
   template: src=../templates/monit.template dest=/etc/monit/conf.d/gify-panda owner=root group=root mode=0644
 
-- name: restart service
-  monit: name=gify-panda state=restarted
+- name: restart monit
+  service: name=monit state=restarted
 
-# - name: start gify-panda app
-#   service: name=/opt/gify-panda-app/gify-panda.py state=started enabled=yes
-
+- name: start app
+  monit: name=gify-panda state=started

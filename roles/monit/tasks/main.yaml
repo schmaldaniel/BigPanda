@@ -7,4 +7,7 @@
     install_recommends: True
 
 - name: copy monitrc
-  copy: src=monitrc dest=/etc/monit/ owner=root group=root mode=0700
+  template: src=monitrc dest=/etc/monit/ owner=root group=root mode=0700
+
+- name: restart monit
+  service: name=monit state=restarted

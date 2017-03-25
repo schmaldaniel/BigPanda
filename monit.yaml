@@ -3,5 +3,8 @@
 - name: Base install monit
   hosts: base
   become: yes
+  vars:
+    - port: 2812
+    - polling_interval: 30
   roles:
     - monit

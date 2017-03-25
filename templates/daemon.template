@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-PIDFILE=/var/run/gify-panda.pid
+PIDFILE=/var/run/{{app_name}}.pid
 
 case $1 in
    start)
        # Launch your program as a detached process
-       sudo python /opt/gify-panda-app/gify-panda.py 2>/dev/null &
+       sudo python /opt/{{app_name}}-app/{{app_name}}.py 2>/dev/null &
        # Get its PID and store it
        pid=$!
        echo $pid | sudo tee ${PIDFILE} 
@@ -19,14 +19,14 @@ case $1 in
    ;;
    status)
    if [ -e ${PIDFILE} ]; then
-      echo gify-panda is running, pid=`cat ${PIDFILE}`
+      echo {{app_name}} is running, pid=`cat ${PIDFILE}`
    else
-      echo gify-panda is NOT running
+      echo {{app_name}} is NOT running
       exit 1
    fi
    ;;
 
    *)
-      echo "usage: gify-panda {start|stop|status}" ;;
+      echo "usage: {{app_name}} {start|stop|status}" ;;
 esac
 exit 0
