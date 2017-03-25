@@ -5,9 +5,6 @@
 - name: copy gify-panda app
   template: src=gify-panda.py dest=/opt/gify-panda-app/ owner=root group=root mode=0755
 
-# - name: copy gify-panda daemon
-#   copy: src=daemon/gify-panda dest=/etc/init.d/ owner=root group=root mode=0755
-
 - name: copy gify-panda daemon
   template: src=../templates/daemon.template dest=/etc/init.d/gify-panda owner=root group=root mode=0755
 

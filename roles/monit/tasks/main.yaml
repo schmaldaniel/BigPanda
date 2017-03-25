@@ -5,9 +5,11 @@
     name: 'monit'
     state: 'latest'
     install_recommends: True
+  register: monitInstalled
 
 - name: copy monitrc
   template: src=monitrc dest=/etc/monit/ owner=root group=root mode=0700
 
 - name: restart monit
   service: name=monit state=restarted
+  when: monitInstalled.changed

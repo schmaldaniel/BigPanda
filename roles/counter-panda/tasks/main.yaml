@@ -1,0 +1,18 @@
+---
+- name: Ensures counter-panda-app dir exists
+  file: path=/opt/counter-panda-app/ state=directory
+
+- name: copy counter-panda app
+  template: src=counter-panda.py dest=/opt/counter-panda-app/ owner=root group=root mode=0755
+
+- name: copy counter-panda daemon
+  template: src=../templates/daemon.template dest=/etc/init.d/counter-panda owner=root group=root mode=0755
+
+- name: copy counter-panda monit
+  template: src=../templates/monit.template dest=/etc/monit/conf.d/counter-panda owner=root group=root mode=0644
+
+- name: restart monit
+  service: name=monit state=restarted
+
+- name: start app
+  monit: name=counter-panda state=started

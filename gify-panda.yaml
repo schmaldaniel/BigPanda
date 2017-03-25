@@ -5,6 +5,6 @@
   vars:
     - app_name: gify-panda
     - service_port: 8000
-    - service_address: '0.0.0.0'
+    - service_address: "0.0.0.0"
   roles:   
-    - gify-panda
+    - {role: gify-panda, tags: gify-panda}

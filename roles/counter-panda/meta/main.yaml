@@ -1,0 +1,4 @@
+---
+allow_duplicates: yes
+dependencies:
+  - { role: monit, port: 2812, polling_interval: 30 }

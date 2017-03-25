@@ -1,9 +1,12 @@
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 
-PORT = 8001
-ADDRESS = '0.0.0.0'
+PORT = {{service_port}}
+ADDRESS = "{{service_address}}"
 
-def counted(f):
+def counter(f):
+    '''
+    Create decorator that cound functions calls
+    '''
     def wrapped(*args, **kwargs):
         wrapped.calls += 1
         return f(*args, **kwargs)
@@ -24,7 +27,7 @@ class myHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-    @counted
+    @counter
     def do_POST(self):
         '''
         Increase the counter by one in every post
@@ -37,9 +40,8 @@ class myHandler(BaseHTTPRequestHandler):
         '''
         Display the POST counter in each GET request
         '''
-        self.counter = self.do_POST.calls
         self._set_headers()
-        self.wfile.write("<html><body><h1>Total POST request</h1><h4>%s</h4></body></html>" % self.counter)
+        self.wfile.write('<html><body style="text-align: center;"><h1>Total POST request</h1><h4>%s</h4></body></html>' % self.do_POST.calls)
 
 class http_server:
     '''

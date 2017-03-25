@@ -1,0 +1,10 @@
+---
+- name: Base counter-panda service
+  hosts: base
+  become: yes
+  vars:
+    - app_name: counter-panda
+    - service_port: 8001
+    - service_address: '0.0.0.0'
+  roles:   
+    - { role: counter-panda, tags: counter-panda}

@@ -4,7 +4,7 @@ import SocketServer
 import os
 
 PORT = {{service_port}}
-ADDRESS = {{service_address}}
+ADDRESS = "{{service_address}}"
 
 def run(address='', port=80):
     '''
