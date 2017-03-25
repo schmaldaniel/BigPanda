@@ -14,14 +14,17 @@ function usage {
     echo "./wrapper.sh -n/--new-deployment -a/--app {app name to be installed - gify-panda/counter-panda}"
     echo ""
     echo "Examples:"
-    echo "--------"
+    echo "---------"
     echo ""
     echo "install both apps on existing base server:"
     echo "./wapper.sh"
+    echo ""
     echo "install single app on existing base server"
     echo "./wapper.sh -a gify-panda"
+    echo ""
     echo "deploy base server from scratch without -a parameter will install both"
     echo "./wapper.sh -n -a gify-panda"
+    echo ""
     exit
 
 }
