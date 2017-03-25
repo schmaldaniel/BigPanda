@@ -50,8 +50,10 @@ function create_vagrantfile {
     cp -fp Vagrantfile.template Vagrantfile
     if [ -v $APP ]; then
         APP='["gify-panda", "counter-panda"]'
+        sed -i s/{{TAGS}}/"$APP"/g Vagrantfile
+    else
+        sed -i s/{{TAGS}}/"'$APP'"/g Vagrantfile
     fi
-    sed -i s/{{TAGS}}/"'$APP'"/g Vagrantfile
 }
 
 function create_base {
