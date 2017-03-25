@@ -14,5 +14,5 @@
 - name: restart monit
   service: name=monit state=restarted
 
-- name: start app
-  monit: name=gify-panda state=started
+- name: restart app
+  monit: name=gify-panda state=restarted
