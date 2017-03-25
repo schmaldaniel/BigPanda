@@ -1,10 +1,11 @@
 ---
-- name: Base gify-panda service
+- name: gify-panda service
   hosts: base
   become: yes
-  vars:
-    - app_name: gify-panda
-    - service_port: 8000
-    - service_address: "0.0.0.0"
   roles:   
-    - {role: gify-panda, tags: gify-panda}
+    - role: gify-panda
+      tags: gify-panda
+      vars:
+        - app_name: gify-panda
+        - service_port: 8000
+        - service_address: "0.0.0.0"
